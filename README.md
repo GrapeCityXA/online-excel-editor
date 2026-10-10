@@ -49,7 +49,7 @@
 ## 安装与使用
 
 ```bash
-cd online-xlsx-editor
+cd skills/online-excel-editor
 npm install   # 无实际第三方依赖，仅为初始化
 
 # 指定文件
@@ -177,14 +177,18 @@ temp_skill_xlsx/
 ## 目录结构
 
 ```
-online-xlsx-editor/
-├── SKILL.md                    # 技能定义（Agent Skills 开放标准：name + description）
-├── index.js                    # 主入口：读文件/扫描候选 → 生成页面 → 起服务 → 等待回传
-├── package.json
-├── lib/
-│   ├── server.js               # 零依赖 HTTP 服务：静态资源 + POST /save
-│   └── html-template.js        # 模板读取 + 数据注入（防 </script> 注入）
-├── public/
-│   └── index.template.html     # SpreadJS 设计器页面模板（导入/导出 + 修改摘要）
-└── README.md
+online-excel-editor/                # 仓库根 = Codex 插件根
+├── .codex-plugin/plugin.json       # 插件清单（skills 指向 ./skills/）
+├── README.md
+└── skills/online-excel-editor/     # 技能目录：引用按技能目录解析
+    ├── SKILL.md                    # 技能定义（Agent Skills 开放标准：name + description）
+    ├── index.js                    # 主入口：读文件/扫描候选 → 生成页面 → 起服务 → 等待回传
+    ├── package.json
+    ├── lib/
+    │   ├── server.js               # 零依赖 HTTP 服务：静态资源 + POST /save
+    │   └── html-template.js        # 模板读取 + 数据注入（防 </script> 注入）
+    ├── public/
+    │   └── index.template.html     # SpreadJS 设计器页面模板（导入/导出 + 修改摘要）
+    └── examples/
+        └── work_arrangement.json   # 表单定义示例
 ```
